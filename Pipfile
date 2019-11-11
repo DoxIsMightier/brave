@@ -14,7 +14,7 @@ pygobject = "*"
 vext = "*"
 psutil = "*"
 gobject = "*"
-streamlink = "*"
+streamlink = {git = "https://github.com/streamlink/streamlink.git"}
 
 [dev-packages]
 
