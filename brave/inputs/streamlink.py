@@ -48,20 +48,21 @@ class StreamlinkInput(Input):
         # See http://gstreamer-devel.966125.n4.nabble.com/Behavior-differences-between-
         #   decodebin3-and-decodebin-and-vtdec-hw-not-working-on-OSX-td4680895.html
         # should do a check of the url by passing it through the stream link script
+        self.suri = ''
         try:
             streams = streamlink.streams(self.uri)
             self.stream = self.uri
             tstream = streams['best']
-            self.uri = tstream.url
+            self.suri = tstream.url
         except:
             pass
         
-        is_rtmp = self.uri.startswith('rtmp')
+        is_rtmp = self.suri.startswith('rtmp')
         playbin_element = 'playbin' if is_rtmp else 'playbin3'
         self.create_pipeline_from_string(playbin_element)
         self.playsink = self.pipeline.get_by_name('playsink')
         self.playbin = self.playsink.parent
-        self.playbin.set_property('uri', self.uri)
+        self.playbin.set_property('uri', self.suri)
         self.playbin.connect('about-to-finish', self.__on_about_to_finish)
 
         if config.enable_video():
@@ -215,4 +216,4 @@ class StreamlinkInput(Input):
     def __on_about_to_finish(self, playbin):
         if self.loop:
             self.logger.debug('About to finish, looping')
-            playbin.set_property('uri', self.uri)
+            playbin.set_property('uri', self.suri)

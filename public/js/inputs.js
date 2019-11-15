@@ -162,6 +162,15 @@ inputsHandler._populateForm = function(input) {
         value: input.uri || '',
         help: uriExamples,
     })
+    
+    var suriRow = formGroup({
+        id: 'input-suri',
+        label: 'Location (URI)',
+        name: 'suri',
+        type: 'text',
+        value: input.suri || '',
+        help: uriExamples,
+    })
 
     const sizeBox = getDimensionsSelect('dimensions', input.width, input.height)
 
@@ -275,7 +284,8 @@ inputsHandler._populateForm = function(input) {
         form.append(loopBox);
         form.append(sizeBox);
         form.append(components.volumeInput(input.volume));
-        form.append(bufferDuationBox)
+        form.append(bufferDuationBox);
+        //form.append(suriRow);
     }
     else if (input.type === 'html') {
         if (isNew) form.append(uriRow);
