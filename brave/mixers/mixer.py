@@ -141,7 +141,7 @@ class Mixer(InputOutputOverlay):
             pipeline_string += ('videotestsrc is-live=true name=videotestsrc ! videoconvert ! videoscale ! '
                                 'capsfilter name=capsfilter ! compositor name=video_mixer ! '
                                 'video/x-raw,format=RGBA ! queue name=video_output_queue ! '
-                                'tee name=final_video_tee allow-not-linked=true')
+                                'tee name=final_video_tee allow-not-linked=false')
         if config.enable_audio():
             pipeline_string += \
                 f' audiotestsrc is-live=true volume=0 ! {config.default_audio_caps()} ! ' + \
