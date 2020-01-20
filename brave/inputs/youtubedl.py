@@ -88,6 +88,7 @@ class YoutubeDLInput(Input):
                 global channel_val
                 meta = ydl.extract_info(self.uri,download=False)
                 channel_val = meta['uploader']
+                self.channel = channel_val
                 # should then try to get the meta data out that we want like channel and description 
                 #self.playbin.set_property('channel', 'test channel')
 
@@ -233,8 +234,9 @@ class YoutubeDLInput(Input):
         '''
         s = super().summarise(for_config_file)
         global channel_val
-        s['channel'] = channel_val
+        
         if not for_config_file:
+            #s['channel'] = channel_val
             buffering_stats = self.get_buffering_stats()
             if buffering_stats:
                 s['buffering_percent'] = buffering_stats.percent
