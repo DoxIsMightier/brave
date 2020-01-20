@@ -235,6 +235,7 @@ inputsHandler._populateForm = function(input) {
     if (isNew) {
         var options = {
             'uri': 'URI (for files, RTMP, RTSP and HLS)',
+            'youtubedl': 'Youtubedl for adding urls',
             'streamlink': 'Streamlink for adding urls',
             'image': 'Image',
             'tcp_client': 'TCP Client (receive from a TCP server)',
@@ -280,6 +281,14 @@ inputsHandler._populateForm = function(input) {
         form.append(bufferDuationBox)
     }
     else if (input.type === 'streamlink') {
+        if (isNew) form.append(uriRow);
+        form.append(loopBox);
+        form.append(sizeBox);
+        form.append(components.volumeInput(input.volume));
+        form.append(bufferDuationBox);
+        //form.append(suriRow);
+    }
+    else if (input.type === 'youtubedl') {
         if (isNew) form.append(uriRow);
         form.append(loopBox);
         form.append(sizeBox);
