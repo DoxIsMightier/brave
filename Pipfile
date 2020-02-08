@@ -15,7 +15,8 @@ pygobject = "*"
 vext = "*"
 psutil = "*"
 gobject = "*"
-streamlink = {git = "https://github.com/streamlink/streamlink.git"}
+#streamlink = {git = "https://github.com/streamlink/streamlink.git"}
+streamlink = "*"
 youtube-dl = "*"
 cef = "*"
 
