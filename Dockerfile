@@ -33,7 +33,7 @@ RUN apt-get update && \
 RUN git clone --depth 1 https://github.com/DoxIsMightier/brave.git && \
     cd brave && \
     pip3 install pipenv sanic && \
-    pipenv install --ignore-pipfile && \
+    pipenv install && \
     mkdir -p /usr/local/share/brave/output_images/
 
 EXPOSE 5000
