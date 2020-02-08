@@ -58,7 +58,7 @@ class StreamlinkInput(Input):
             pass
         
         is_rtmp = self.suri.startswith('rtmp')
-        playbin_element = 'playbin' if is_rtmp else 'playbin3'
+        playbin_element = 'playbin' if is_rtmp else 'playbin'
         self.create_pipeline_from_string(playbin_element)
         self.playsink = self.pipeline.get_by_name('playsink')
         self.playbin = self.playsink.parent
