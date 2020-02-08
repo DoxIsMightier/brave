@@ -17,6 +17,7 @@ psutil = "*"
 gobject = "*"
 streamlink = {git = "https://github.com/streamlink/streamlink.git"}
 youtube-dl = "*"
+cef = "*"
 
 [dev-packages]
 
